@@ -1,0 +1,3 @@
+FROM node
+ADD . . 
+EXPOSE 5000
