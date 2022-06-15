@@ -3,14 +3,9 @@ node('label': 'cent') {
         checkout scm
         sh 'echo $PWD'
     }
-    stage('docker npm pull') {
-        def npmcont = docker.image('node')
-        npmcont.pull()
-        npmcont.inside {
-            sh 'npm install'
-            sh 'npm start'
+    stage('docker image build') {
+        sh 'docker build -t node:current .'
         }
     }
-}
 
 
