@@ -5,15 +5,9 @@ node('label': 'cent') {
     }
     stage('docker image build') {
         sh 'docker build -t node:current .'
+        sh 'docker container start -p 5000:5000 node:current'
         }
-    stage('docker npm pull') {
-        def npmcont = docker.image('node:current')
-        npmcont.pull()
-        npmcont.inside('-p 5000:5000') {
-            sh 'npm install'
-            sh 'npm start'
-        }
-    }
+    
 }
 
 
