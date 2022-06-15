@@ -14,5 +14,6 @@ node('label': 'cent') {
             sh 'npm start'
         }
     }
+}
 
 
